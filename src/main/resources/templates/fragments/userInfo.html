@@ -1,0 +1,35 @@
+<div th:fragment="userInfo">
+    <h1 class="ps-3">User information-page</h1>
+    <div class="container-fluid">
+        <div class="row border">
+            <h5 class="p-2">About user</h5>
+        </div>
+        <div class="row border bg-white">
+            <table class="table table-borderless table-striped">
+                <thead>
+                <tr class="border-top">
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Role</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="border-top bg-light" th:object="${user}">
+                    <td th:text="*{id}"/>
+                    <td th:text="*{firstName}"/>
+                    <td th:text="*{lastName}"/>
+                    <td th:text="*{age}"/>
+                    <td th:text="*{email}"/>
+                    <td>
+                        <th:block th:each="role : *{getRoles()}">
+                            &nbsp;<span th:text="${role.getRoleName()}"/>
+                        </th:block>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

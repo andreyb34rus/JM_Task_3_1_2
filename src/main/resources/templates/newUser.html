@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New person</title>
+</head>
+<body>
+<h3>Fill in person data</h3>
+<!-- th:action - куда отправляем данные из формы -->
+<!-- th:object  - объект передаваемый контроллером -->
+<form th:method="POST" th:action="@{/admin/addUser}" th:object="${emptyUser}">
+    <label for="first name">First name: </label>
+    <input type="text" th:field="*{getFirstName}" id="first name"/>
+    <br/> <br/>
+    <label for="last name">Last name: </label>
+    <input type="text" th:field="*{getLastName}" id="last name"/>
+    <br/> <br/>
+    <label for="age">Age: </label>
+    <input type="text" th:field="*{getAge}" id="age"/>
+    <br/> <br/>
+    <label for="password">Password: </label>
+    <input type="text" th:field="*{getPassword}" id="password"/>
+    <br/> <br/>
+    <p>
+    <ul style="list-style-type:none;">
+        <li th:each="checkedRole: ${allRolesList}">
+            <input type="checkbox"
+                   name="checkboxResult"
+                   th:value="${checkedRole}"/>
+            <label
+                    th:text="${checkedRole}"></label>
+        </li>
+    </ul>
+    </p>
+    <br/>
+    <input type="submit" value="save User"/>
+</form>
+<br/>
+<form th:action="@{/logout}" method="POST">
+    <input type="submit" value="Logout"/>
+</form>
+</body>
+</html>
