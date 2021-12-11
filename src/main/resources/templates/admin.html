@@ -289,7 +289,7 @@
                         <div style="text-align: center;">
                             <div class="row justify-content-center align-items-center">
                                 <form class="text-center"
-                                      th:action="@{/admin/updateUser}"
+                                      th:action="@{/admin/updateUser/{id} (id=${userf.getId()})}"
                                       th:method="POST"
                                       th:object="${editUser}"
                                       id="editFormBody">
@@ -300,17 +300,17 @@
                                             <input type="text"
                                                    class="form-control" id="id2"
                                                    name="id2"
-                                                   th:field="*{id}"
-                                                   />
+                                                   th:value="${userf.getId()}"
+                                                   disabled/>
                                         </div>
 
                                         <div class="form-group m-3">
-                                            <label for="firstName2" class="col-form-label">First
+                                            <label th:attr="for='firstNameId'+ ${userf.getId()}" class="col-form-label">First
                                                 name</label>
                                             <input type="text" class="form-control"
-                                                   id="firstName2"
+                                                   th:attr="id='firstNameId'+ ${userf.getId()}"
                                                    name="firstName2"
-                                                   th:field="*{firstName}">
+                                                   th:value="${userf.getFirstName()}"/>
                                         </div>
 
                                         <div class="form-group m-3">
@@ -319,7 +319,7 @@
                                             <input type="text" class="form-control"
                                                    id="lastName2"
                                                    name="lastName2"
-                                                   th:field="*{lastName}">
+                                                   th:value="${userf.getLastName()}"/>
                                         </div>
 
                                         <div class="form-group m-3">
@@ -328,7 +328,7 @@
                                             <input type="text" class="form-control"
                                                    id="age2"
                                                    name="age2"
-                                                   th:field="*{age}">
+                                                   th:value="${userf.getAge()}"/>
                                         </div>
 
                                         <div class="form-group m-3">
@@ -337,7 +337,7 @@
                                             <input type="text" class="form-control"
                                                    id="email2"
                                                    name="email2"
-                                                   th:field="*{email}">
+                                                   th:value="${userf.getEmail()}"/>
                                         </div>
 
                                         <div class="form-group m-3">
@@ -346,7 +346,7 @@
                                             <input type="password" class="form-control"
                                                    id="password"
                                                    name="password"
-                                                   th:field="*{password}"
+                                                   th:value="${userf.getPassword()}"
                                                    disabled/>
                                         </div>
 

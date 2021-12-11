@@ -34,20 +34,13 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void update(User user) throws Exception {
-        if (user.getFirstName() == null){
+    public void update(Long id, User user) throws Exception {
+        if (user == null){
             throw new Exception("Boo!");
         }else{
-            System.out.println(user.getFirstName());
             System.out.println(user);
         }
-            Optional<User> userOpt = userRepository.findById(user.getId());
-        User userToUpdate;
-        if (userOpt.isPresent()) {
-            userToUpdate = userOpt.get();
-        } else {
-            throw new Exception("Нет юзера");
-        }
+        User userToUpdate = userRepository.getById(id);
         userToUpdate.setFirstName(user.getFirstName());
         userToUpdate.setLastName(user.getLastName());
         userToUpdate.setEmail(user.getEmail());

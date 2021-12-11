@@ -30,7 +30,7 @@ public class AdminController {
         model.addAttribute("users", userService.getAllUsers());
         model.addAttribute("roles", roleService.getAllRoles());
         model.addAttribute("emptyUser", new User());
-        model.addAttribute("editUser", userService.getUserById(1L));
+        model.addAttribute("editUser", new User());
         return "/admin";
     }
 
@@ -72,14 +72,15 @@ public class AdminController {
 
 
 
-    @PostMapping ( "/updateUser")
+    @PostMapping ( "/updateUser/{id}")
     public String updateUser(@ModelAttribute("editUser") User user,
+                             @PathVariable("id") Long id,
                              @RequestParam(value = "userRolesSelector") String[] selectResult) throws Exception {
 
         for (String s : selectResult) {
             user.addRole(roleService.getRoleByName("ROLE_" + s));
         }
-        userService.update(user);
+        userService.update(id, user);
         return "redirect:/admin";
     }
 }
