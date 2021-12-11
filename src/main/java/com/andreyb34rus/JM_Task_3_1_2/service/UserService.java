@@ -9,10 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
-public class UserService{
+public class UserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -33,8 +34,20 @@ public class UserService{
         userRepository.save(user);
     }
 
-    public void update(User user) {
-        User userToUpdate = userRepository.findById(user.getId()).get();
+    public void update(User user) throws Exception {
+        if (user.getFirstName() == null){
+            throw new Exception("Boo!");
+        }else{
+            System.out.println(user.getFirstName());
+            System.out.println(user);
+        }
+            Optional<User> userOpt = userRepository.findById(user.getId());
+        User userToUpdate;
+        if (userOpt.isPresent()) {
+            userToUpdate = userOpt.get();
+        } else {
+            throw new Exception("Нет юзера");
+        }
         userToUpdate.setFirstName(user.getFirstName());
         userToUpdate.setLastName(user.getLastName());
         userToUpdate.setEmail(user.getEmail());
@@ -48,9 +61,14 @@ public class UserService{
     }
 
     public void setInitData() {
-       Role userRole = new Role("ROLE_USER");
-       Role adminRole = new Role("ROLE_ADMIN");
-       userRepository.save(new User("user", "user", (byte)30, "user@mail.ru", "123", new HashSet<Role>(){{add(userRole);}}));
-       userRepository.save(new User("admin", "admin", (byte)35, "admin@mail.ru", "456", new HashSet<Role>(){{add(userRole); add(adminRole);}}));
+        Role userRole = new Role("ROLE_USER");
+        Role adminRole = new Role("ROLE_ADMIN");
+        userRepository.save(new User("user", "user", (byte) 30, "user@mail.ru", "123", new HashSet<Role>() {{
+            add(userRole);
+        }}));
+        userRepository.save(new User("admin", "admin", (byte) 35, "admin@mail.ru", "456", new HashSet<Role>() {{
+            add(userRole);
+            add(adminRole);
+        }}));
     }
 }

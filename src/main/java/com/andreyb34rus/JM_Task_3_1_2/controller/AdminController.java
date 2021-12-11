@@ -1,5 +1,6 @@
 package com.andreyb34rus.JM_Task_3_1_2.controller;
 
+import com.andreyb34rus.JM_Task_3_1_2.model.Role;
 import com.andreyb34rus.JM_Task_3_1_2.model.User;
 import com.andreyb34rus.JM_Task_3_1_2.service.RoleService;
 import com.andreyb34rus.JM_Task_3_1_2.service.UserService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
+import java.util.HashSet;
 
 @Controller
 @RequestMapping("/admin")
@@ -23,11 +25,12 @@ public class AdminController {
 
 
     @GetMapping(value = "")
-    public String getAdminPage(Model model,  Principal principal ) {
+    public String getAdminPage(Model model, Principal principal) {
         model.addAttribute("user", userService.getUserByEmail(principal.getName()));
         model.addAttribute("users", userService.getAllUsers());
         model.addAttribute("roles", roleService.getAllRoles());
         model.addAttribute("emptyUser", new User());
+        model.addAttribute("editUser", userService.getUserById(1L));
         return "/admin";
     }
 
@@ -44,7 +47,7 @@ public class AdminController {
     public String createUser(@ModelAttribute("emptyUser") User user,
                              @RequestParam(value = "checkedRoles") String[] selectResult) {
         for (String s : selectResult) {
-            user.addRole( roleService.getRoleByName("ROLE_" + s));
+            user.addRole(roleService.getRoleByName("ROLE_" + s));
         }
         userService.save(user);
         return "redirect:/admin";
@@ -67,9 +70,11 @@ public class AdminController {
     }
 */
 
-    @PostMapping("/updateUser")
-    public String updateUser(@ModelAttribute("userf") User user,
-                             @RequestParam(value = "userRolesSelector") String[] selectResult) {
+
+
+    @PostMapping ( "/updateUser")
+    public String updateUser(@ModelAttribute("editUser") User user,
+                             @RequestParam(value = "userRolesSelector") String[] selectResult) throws Exception {
 
         for (String s : selectResult) {
             user.addRole(roleService.getRoleByName("ROLE_" + s));
