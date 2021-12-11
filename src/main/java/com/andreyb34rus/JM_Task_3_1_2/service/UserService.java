@@ -34,12 +34,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void update(Long id, User user) throws Exception {
-        if (user == null){
-            throw new Exception("Boo!");
-        }else{
-            System.out.println(user);
-        }
+    public void update(Long id, User user) {
         User userToUpdate = userRepository.getById(id);
         userToUpdate.setFirstName(user.getFirstName());
         userToUpdate.setLastName(user.getLastName());

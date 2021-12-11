@@ -25,7 +25,7 @@
                     <td th:text="*{email}"/>
                     <td>
                         <th:block th:each="role : *{getRoles()}">
-                            &nbsp;<span th:text="${role.getRoleName()}"/>
+                            &nbsp;<span th:text="${role.toString()}"/>
                         </th:block>
                     </td>
                 </tr>

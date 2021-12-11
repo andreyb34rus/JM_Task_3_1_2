@@ -59,7 +59,7 @@ public class User {
             if (!first) {
                 s += ", ";
             }
-            s += role.getRoleName();
+            s += role.toString();
             first = false;
         }
         return s;
@@ -67,18 +67,5 @@ public class User {
 
     public void addRole(Role role) {
         roles.add(role);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", roles=" + roles +
-                '}';
     }
 }

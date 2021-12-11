@@ -6,12 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -43,7 +41,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("j_password")
                 .permitAll();
 
-        //http.csrf().disable(); //- попробуйте выяснить сами, что это даёт
         http
                 .authorizeRequests()
                 .antMatchers("/111").permitAll()
@@ -62,16 +59,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable();;
     }
-
-        // Этот метод пропускает ошибку логина обратно на форму и направляет по ссылке экшена
-/*
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        // необходимо для работы css и прочих ресурсов
-        web.ignoring().antMatchers("/css/**", "/js/**").anyRequest();
-    }
-*/
-
 
     // Необходимо для шифрования паролей
     // В данном примере не используется, отключен

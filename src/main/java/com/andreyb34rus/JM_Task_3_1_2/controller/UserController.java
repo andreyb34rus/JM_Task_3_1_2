@@ -25,9 +25,4 @@ public class UserController {
         model.addAttribute("user", userService.getUserByEmail(principal.getName()));
         return "/user";
     }
-
-    @GetMapping(value = "111")
-    public String get111(){
-        return "/111";
-    }
 }
