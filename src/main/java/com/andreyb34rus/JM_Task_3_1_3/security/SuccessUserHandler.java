@@ -1,4 +1,4 @@
-package com.andreyb34rus.JM_Task_3_1_2.security;
+package com.andreyb34rus.JM_Task_3_1_3.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;

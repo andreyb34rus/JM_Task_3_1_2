@@ -1,4 +1,4 @@
-package com.andreyb34rus.JM_Task_3_1_2.security;
+package com.andreyb34rus.JM_Task_3_1_3.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

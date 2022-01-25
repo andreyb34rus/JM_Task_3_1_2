@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.andreyb34rus</groupId>
-	<artifactId>JM_Task_3_1_2</artifactId>
+	<artifactId>JM_Task_3_1_3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>JM_Task_3_1_2</name>
-	<description>Java pre-project. Задача 3.1.2</description>
+	<name>JM_Task_3_1_3</name>
+	<description>Java pre-project. Задача 3.1.3</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>

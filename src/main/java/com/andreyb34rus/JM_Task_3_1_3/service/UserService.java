@@ -1,15 +1,14 @@
-package com.andreyb34rus.JM_Task_3_1_2.service;
+package com.andreyb34rus.JM_Task_3_1_3.service;
 
-import com.andreyb34rus.JM_Task_3_1_2.model.Role;
-import com.andreyb34rus.JM_Task_3_1_2.model.User;
-import com.andreyb34rus.JM_Task_3_1_2.repository.UserRepository;
+import com.andreyb34rus.JM_Task_3_1_3.model.Role;
+import com.andreyb34rus.JM_Task_3_1_3.model.User;
+import com.andreyb34rus.JM_Task_3_1_3.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional

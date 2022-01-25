@@ -1,6 +1,6 @@
-package com.andreyb34rus.JM_Task_3_1_2.controller;
+package com.andreyb34rus.JM_Task_3_1_3.controller;
 
-import com.andreyb34rus.JM_Task_3_1_2.service.UserService;
+import com.andreyb34rus.JM_Task_3_1_3.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

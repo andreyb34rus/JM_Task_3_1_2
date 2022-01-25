@@ -1,7 +1,7 @@
-package com.andreyb34rus.JM_Task_3_1_2.service;
+package com.andreyb34rus.JM_Task_3_1_3.service;
 
-import com.andreyb34rus.JM_Task_3_1_2.model.Role;
-import com.andreyb34rus.JM_Task_3_1_2.repository.RoleRepository;
+import com.andreyb34rus.JM_Task_3_1_3.model.Role;
+import com.andreyb34rus.JM_Task_3_1_3.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package com.andreyb34rus.JM_Task_3_1_2.model;
+package com.andreyb34rus.JM_Task_3_1_3.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
